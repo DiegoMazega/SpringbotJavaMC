@@ -20,7 +20,7 @@ public class CategoriaResources {
 	
 	@GetMapping(value="/{id}") //Variavel que vem da url. 
 	public ResponseEntity<?> listarPorId(@PathVariable Integer id) {
-		Categoria obj = service.search(id);
+		Categoria obj = service.find(id);
 		return ResponseEntity.ok(obj);
 	}
 
