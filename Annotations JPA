@@ -1,0 +1,52 @@
+@Entity -> informa que a classe também é uma variavel e assim a JPA cria uma relação dela com uma
+tabela do BD com o mesmo nome que a classe.
+
+@Autowired -> Tem seu funcionalmento semelhante ao Pattern Singleton. 
+ele cria a instância que iremos usar de um objeto apenas uma única vez.
+evitando assim que o objeto seja instânciado sempre que formos acessar algo naquela classe.
+
+@RestController -> informa que iremos usar o padrão de comunicação Rest
+
+@RequestMapping(value="nome da rota aqui") -> informa o nome da rota para acessar os dados da classe
+
+@GetMapping -> informa que o metodo será usado como o Metodo Get do Http.
+se precisar passar um valor para a rota, inclua: (value="/{nome que quiser dar a variavel}") após o
+@GetMapping.
+
+@PathVariable -> diz para o metodo que valor da variavel que ela espera virá pela rota da requisição
+
+
+@Id -> cria a notação de chave primaria para o campo.
+
+@GeneratedValue(strategy=GenerationType.IDENTITY) -> Cria o auto incrimento do campo.
+ao precisar instanciar passar falor como 'null'. Lembrar de usar as Wrap Classes pro atributo.
+
+@Repository -> habilita um objeto desse tipo a realizar acesso a dados.
+
+@ManyToMany -> associação de muitos para muitos entre os campos em questão.
+
+@ManyToMany(mappedBy = "nome do atributo em que foi feito a categoria do outro lado") ->
+informa que esse atributo é o outro lado de um mapeameto feito em outra classe.
+
+@JoinTable -> Cria a tabela de relação de muitos para muitos no bd relacional.
+Essa notação tem propriedades:
+'name' -> cria o nome da tabela que fará a relação
+'joinColumns' -> cria a relação da chave estrangeira e fala seu nome. 
+usar a notação '@JoinColumn' com o parametro 'name' para dizer o nome do campo que será a chave
+estrangeira na tabela.
+'inverseJoinColumns' -> diz qual vai ser o nome da outra chave estrangeira que vai referenciar
+a outra tabela. usar mesma configuração de '@JoinColumn' usada acima para dizer o nome
+da chave estrangeira da outra tabela.
+
+@JsonManagedReference -> Cria uma Referencia gerenciada pelo Json. 
+evita o retorno infinito da requisição quando dois atributos se referenciam. 
+nescessário configurar o outro lado também. usar ela no lado que você gostaria que venha
+os objetos associados.
+
+@JsonBackReference -> diz que do outro lado da associação(ManyToMany) já foram buscados os objetos.
+Logo, desse lado não será feito o retorno dos valores.
+
+@ControllerAdvice -> permite tratar exceções por toda aplicação usando apenas um componente global.
+
+@ExceptionHandler -> indica que o metodo será um tratador de exceção. 
+nescessário passar como paramentro o tipo de exceção
