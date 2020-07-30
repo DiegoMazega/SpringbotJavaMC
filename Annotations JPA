@@ -7,7 +7,8 @@ evitando assim que o objeto seja instânciado sempre que formos acessar algo naq
 
 @RestController -> informa que iremos usar o padrão de comunicação Rest
 
-@RequestMapping(value="nome da rota aqui") -> informa o nome da rota para acessar os dados da classe
+@RequestMapping(value="nome da rota aqui") -> informa o nome da rota para acessar os dados da classe.
+Cria o endpoint.
 
 @GetMapping -> informa que o metodo será usado como o Metodo Get do Http.
 se precisar passar um valor para a rota, inclua: (value="/{nome que quiser dar a variavel}") após o

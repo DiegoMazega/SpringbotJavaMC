@@ -7,21 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diegomazega.cursomc.domain.Categoria;
-import com.diegomazega.cursomc.services.CategoriaService;
+import com.diegomazega.cursomc.domain.Cliente;
+import com.diegomazega.cursomc.services.ClienteService;
 
 @RestController
-@RequestMapping(value="/categorias") //nome do endpoint
-public class CategoriaResources {
+@RequestMapping(value = "/clientes")
+public class ClienteResources {
 	
 	@Autowired
-	private CategoriaService service;
+	private ClienteService clienteService;
 	
-	
-	@GetMapping(value="/{id}") //Variavel que vem da url. 
-	public ResponseEntity<?> listarPorId(@PathVariable Integer id) {
-		Categoria categoria = service.find(id);
-		return ResponseEntity.ok(categoria);
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<?> listarPorId(@PathVariable Integer id){
+		Cliente cliente = clienteService.find(id);
+		return ResponseEntity.ok(cliente);
 	}
-
 }
