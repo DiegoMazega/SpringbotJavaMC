@@ -28,6 +28,8 @@ ao precisar instanciar passar falor como 'null'. Lembrar de usar as Wrap Classes
 @ManyToMany(mappedBy = "nome do atributo em que foi feito a categoria do outro lado") ->
 informa que esse atributo é o outro lado de um mapeameto feito em outra classe.
 
+@OneToMany -> associação de um para muitos entre os campos em questão.
+
 @JoinTable -> Cria a tabela de relação de muitos para muitos no bd relacional.
 Essa notação tem propriedades:
 'name' -> cria o nome da tabela que fará a relação
@@ -50,3 +52,10 @@ Logo, desse lado não será feito o retorno dos valores.
 
 @ExceptionHandler -> indica que o metodo será um tratador de exceção. 
 nescessário passar como paramentro o tipo de exceção
+
+@ElementCollection -> cria um mapeamento do atributo. funciona parecido com o @OneToMany,
+mas o @OneToMany cria mapeamento entre @Entity.
+
+@CollectionTable -> Cria uma tabela no banco de dados para armazenar os valores do atributo.
+tem que passar como parametro o nome da tabela: (name="nomeDaTabela").
+Ela Pega o ID da classe para fazer uma relação.
