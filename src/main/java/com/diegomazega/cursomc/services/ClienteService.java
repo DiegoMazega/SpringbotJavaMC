@@ -1,5 +1,6 @@
 package com.diegomazega.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class ClienteService {
 		Optional<Cliente> obj = clienteRepository.findById(id);
 		return obj.orElseThrow(()-> new ObjectNotFoundException("Cliente não encontrando. ID: "+ id
 				+". tipo: "+ Cliente.class.getName()));
+	}
+	
+	public List<Cliente> findAll(){
+		return clienteRepository.findAll();
 	}
 }

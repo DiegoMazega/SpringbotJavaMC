@@ -60,3 +60,30 @@ mas o @OneToMany cria mapeamento entre @Entity.
 @CollectionTable -> Cria uma tabela no banco de dados para armazenar os valores do atributo.
 tem que passar como parametro o nome da tabela: (name="nomeDaTabela").
 Ela Pega o ID da classe para fazer uma relação.
+
+@MapsId -> No relacionamento OneToOne, ManyToOne ou ManyToMany, o MapsId garante que a
+chave primaria de ambas as classes sejam a mesma.
+
+@Inheritance -> Forma de mapeamento de herença do hibernate.
+temos que passar a "strategy" como parametro.
+esse parametro pode receber 3 valores:
+
+1º InheritanceType.SINGLE_TABLE: unie todas as classes filhas em uma unica tabela junto a classe mãe,
+conhecida também como tabelão. Esse metodo precisa de um agente "discriminator",
+esse agente fará a diferenã entra os atributor que serão correspondentes a cada
+filho da classe. exemplo de uso: 
+@DiscriminatorColumn(name = "tipo", length = 1, discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("P").
+Esse agente foi usado em uma classe mãe "Pessoa" para diferenciar pessoa fisica de jurida. 
+nas classes filhas. Precisamos passar apenas o "@DiscriminatorValue("ValorDaChaveAqui")",
+para que haja diferenciação entre todas as classes filhas.
+
+2º InheritanceType.JOINED: com esse metodo, a classe mãe e seus N filhos ficaram com suas
+próprias tabelas, e cada tabela da classe filha terá uma chave estrangeira apontando para 
+a classe mãe. Nesse caso, precisamos usar "@PrimaryKeyJoinColumn(name="CampoDaChaveNaClasseMãe")",
+em cada uma das classes filhas, assim será feita o join.
+
+3º InheritanceType.TABLE_PER_CLASS: transformando a classe mãe para abstract class(classe abstrata),
+essa forma de implementação garante que apenas as classes concretas terão suas tabelas criadas,
+e os campos serão a união dos campos da classe mãe com os campos da classe filha em questão.
+não é nescessário nenhuma annotation extra para as classes filhas, apenas a "@Entity".

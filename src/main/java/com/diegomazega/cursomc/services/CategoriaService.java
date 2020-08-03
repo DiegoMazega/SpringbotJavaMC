@@ -1,5 +1,6 @@
 package com.diegomazega.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class CategoriaService {
 		return obj.orElseThrow(()-> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: "+id+", tipo: "+Categoria.class.getName()));
 	}
+	
+	public List<Categoria> findAll(){
+		List<Categoria> obj = repo.findAll();
+		return obj;
+		}
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.diegomazega.cursomc.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,11 @@ public class CategoriaResources {
 	@Autowired
 	private CategoriaService service;
 	
+	@GetMapping
+	public ResponseEntity<List<Categoria>> listarTodos(){
+		List<Categoria> catList = service.findAll();
+		return ResponseEntity.ok(catList);
+	}
 	
 	@GetMapping(value="/{id}") //Variavel que vem da url. 
 	public ResponseEntity<?> listarPorId(@PathVariable Integer id) {

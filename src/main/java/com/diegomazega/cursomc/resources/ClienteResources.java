@@ -1,5 +1,7 @@
 package com.diegomazega.cursomc.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,12 @@ public class ClienteResources {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@GetMapping
+	public ResponseEntity<List<Cliente>> listarTodos(){
+		List<Cliente> cliList = clienteService.findAll();
+		return ResponseEntity.ok(cliList);
+	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> listarPorId(@PathVariable Integer id){
