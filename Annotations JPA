@@ -87,3 +87,6 @@ em cada uma das classes filhas, assim será feita o join.
 essa forma de implementação garante que apenas as classes concretas terão suas tabelas criadas,
 e os campos serão a união dos campos da classe mãe com os campos da classe filha em questão.
 não é nescessário nenhuma annotation extra para as classes filhas, apenas a "@Entity".
+
+@Embeddable -> esta informando que a classe pode compor uma entidade. 
+usar o "@EmbeddedID" no atributo onde essa classe for instanciada
