@@ -90,3 +90,5 @@ não é nescessário nenhuma annotation extra para as classes filhas, apenas a "
 
 @Embeddable -> esta informando que a classe pode compor uma entidade. 
 usar o "@EmbeddedID" no atributo onde essa classe for instanciada
+
+@JsonIgnore -> ignora o retorno desse atributo pela api
